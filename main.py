@@ -1,12 +1,14 @@
 def main():
     import sys # Import the sys module for system-specific parameters and functions
-    print(sys.argv) # Print the Python version being used
+    if len(sys.argv) != 2: # Check if the script is run with the correct number of arguments
+        print("Usage: python3 main.py <path_to_book>") # Print the usage message if the number of arguments is incorrect
+        sys.exit(1) # Exit the program with an error code if the usage is incorrect
     from stats import count_words # Import the count_words function from the stats.py file > used in main function
     from stats import sort_characters # Import the sort_on function from the stats.py file > used in main function
-    book_path = 'books/frankenstein.txt' # Path to the book file > used in get_book_text function
+    book_path = sys.argv[1] # Path to the book file > used in get_book_text function
     book_text = get_book_text(book_path) # Function to read the book text > used in count_words function
-    num_words = count_words(get_book_text) # Function to count the words in the book text
-    char_list = sort_characters(get_book_text) # Function to sort the characters by count
+    num_words = count_words(book_text) # Function to count the words in the book text
+    char_list = sort_characters(book_text) # Function to sort the characters by count
     print("============ BOOKBOT ============") # Print the header for the output
     print(f"Analyzing book found at {book_path}...") # Print the path of the book being analyzed
     print("----------- Word Count ----------") # Print the header for the word count section

@@ -1,10 +1,10 @@
 def count_words(get_book_text):
-    words = get_book_text('books/frankenstein.txt').split() # Split the book text into words
+    words = get_book_text.split() # Split the book text into words
     num_words = len(words) # Count the number of words
     return num_words # Return the number of words counted
 
 def character_count(get_book_text):
-    text = get_book_text('books/frankenstein.txt').lower() # Get the book text
+    text = get_book_text.lower() # Get the book text
     characters = {} # Initialize an empty dictionary to count characters
     for chr in text:
         if chr in characters: # Check if the character is already in the dictionary
